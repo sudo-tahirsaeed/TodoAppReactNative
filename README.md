@@ -17,6 +17,7 @@ Welcome to the Todo List App! This application is designed to help users effecti
 
 ### Additional Features
 - **Notes and Descriptions:** Add notes or descriptions to tasks for additional context or details, enhancing task comprehension and execution.
+- **Optimization:** Initially few tasks are rendered and on scroll it renders more to handle large chunk of data without affecting UI
 - **Category Assignment:** Assign tasks to different categories or projects to organize tasks based on different areas of focus or responsibilities, improving task management efficiency.
 - **Reminder Settings:** Set reminders for tasks to receive timely notifications and stay on track with commitments, ensuring tasks are completed on time.
 - **Share on WhatsApp:** Easily share task details with others via WhatsApp, facilitating collaboration and communication among users.
