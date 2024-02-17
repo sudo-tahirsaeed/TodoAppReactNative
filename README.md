@@ -17,6 +17,7 @@ Welcome to the Todo List App! This application is designed to help users effecti
 
 ### Additional Features
 - **Notes and Descriptions:** Add notes or descriptions to tasks for additional context or details, enhancing task comprehension and execution.
+- **Validations:** User cant enter task without title, deadline and catagory description is optional also the limit for title is 35 characters max.
 - **Optimization:** Initially few tasks are rendered and on scroll it renders more to handle large chunk of data without affecting UI
 - **Category Assignment:** Assign tasks to different categories or projects to organize tasks based on different areas of focus or responsibilities, improving task management efficiency.
 - **Reminder Settings:** Set reminders for tasks to receive timely notifications and stay on track with commitments, ensuring tasks are completed on time.
