@@ -22,6 +22,8 @@ Welcome to the Todo List App! This application is designed to help users effecti
 - **Category Assignment:** Assign tasks to different categories or projects to organize tasks based on different areas of focus or responsibilities, improving task management efficiency.
 - **Reminder Settings:** Set reminders for tasks to receive timely notifications and stay on track with commitments, ensuring tasks are completed on time.
 - **Share on WhatsApp:** Easily share task details with others via WhatsApp, facilitating collaboration and communication among users.
+## ScreenShots
+![Screenshot](/Screenshots/homescreen.png)
 
 ## Technologies Used
 - **React Native:** A framework for building cross-platform mobile applications, providing a robust and efficient development environment.
