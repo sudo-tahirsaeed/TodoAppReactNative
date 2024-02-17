@@ -1,6 +1,5 @@
 import React from "react";
 import { Text, View, TouchableOpacity } from "react-native";
-
 import { SearchBar } from "@rneui/themed";
 import { Chip } from "@rneui/themed";
 import TaskModal from "../components/Modals";
@@ -23,22 +22,16 @@ export default function Main() {
   var AllTasks = useSelector((state: any) => state.addtask);
   // State to store tasks locally
   const [mytasks, setmyTasks] = React.useState(AllTasks);
-
   // Redux dispatch function
   const dispatch = useDispatch();
-
   // State to store search input value
   const [value, setValue] = React.useState("");
-
   // State to control the visibility of modal
   const [showModal, setShowModal] = React.useState<boolean>(false);
-
   // State to store selected chip value
   const [chipVal, setChip] = React.useState<number>(3);
-
   // State to control loading state
   const [load, setload] = React.useState<boolean>(false);
-
   // State to control sorting tasks by date
   const [bydate, setbydate] = React.useState<boolean>(false);
   //Loading Tasks Initially
@@ -53,17 +46,14 @@ export default function Main() {
   const modifyTasks = (val: number) => {
     // Resetting the 'bydate' state to false
     setbydate(false);
-
     // If a search query exists, filter tasks based on the search query
     if (value) {
       // Resetting the chip filter to 'All' while searching
       setChip(3);
-
       // Filtering tasks based on the search query
       const filteredData = AllTasks.filter((task: Tasks) =>
         task.title.toLowerCase().includes(value.toLowerCase())
       );
-
       // Updating the state to display the filtered tasks
       setmyTasks(filteredData);
     } else {
@@ -84,13 +74,11 @@ export default function Main() {
             deadline: formattedDeadline,
           };
         });
-
         const sortedTasks = [...tasksWithFormattedDates].sort((a, b) => {
           const dateA = new Date(b.deadline);
           const dateB = new Date(a.deadline);
           return dateB.getTime() - dateA.getTime();
         });
-
         // Update the state to display sorted tasks by date
         setmyTasks(sortedTasks);
         // Set the 'bydate' state to true
@@ -101,12 +89,10 @@ export default function Main() {
       const filteredTasks = AllTasks.filter(
         (task: Tasks) => task.status === val
       );
-
       // Update the state to display filtered tasks
       setmyTasks(filteredTasks);
     }
   };
-
   // Function to load tasks from AsyncStorage and dispatch to redux
   const loadTasks = async () => {
     try {
@@ -123,7 +109,6 @@ export default function Main() {
       console.error("Error loading tasks", error);
     }
   };
-
   //Our Main Screen with necessary components
   return (
     <View style={styles.container}>
@@ -147,7 +132,6 @@ export default function Main() {
           +
         </Text>
       </TouchableOpacity>
-
       <SearchBar
         platform="default"
         clearIcon={{
@@ -226,7 +210,6 @@ export default function Main() {
             borderColor: "gray",
             borderWidth: 1,
             borderRadius: 5,
-
             marginRight: "5%",
           }}
           titleStyle={{ color: "black", fontSize: 12 }}
@@ -245,7 +228,6 @@ export default function Main() {
             borderColor: "gray",
             borderWidth: 1,
             borderRadius: 5,
-
             marginRight: "5%",
           }}
           titleStyle={{ color: "black", fontSize: 12 }}
@@ -264,7 +246,6 @@ export default function Main() {
             borderColor: "gray",
             borderWidth: 1,
             borderRadius: 5,
-
             marginRight: "10%",
           }}
           titleStyle={{

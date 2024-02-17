@@ -1,6 +1,5 @@
 // Import necessary modules from Redux Toolkit
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
 // Define the interface for the task object
 interface AddTask {
   taskid: string;
@@ -10,13 +9,10 @@ interface AddTask {
   description: string;
   status: number;
 }
-
 // Define the initial state as an empty array of tasks
 const initialState: AddTask[] = [];
-
 // Define the type for the action payload, which can be a single task or an array of tasks
 type AddTaskAction = AddTask | AddTask[];
-
 // Create a slice for managing tasks
 const titleSlice = createSlice({
   name: "title", // Slice name
@@ -59,7 +55,6 @@ const titleSlice = createSlice({
     },
   },
 });
-
 // Export the action creators and reducer function
 export const { AddTask, DeleteTask, UpdateTaskStatus } = titleSlice.actions;
 export default titleSlice.reducer;

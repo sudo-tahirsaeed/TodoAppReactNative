@@ -38,10 +38,8 @@ interface NewTask {
 const TaskModal: React.FC<TaskModalProps> = ({ visible, onClose }) => {
   // Accessing all tasks from the Redux store using useSelector
   const AllTasks = useSelector((state: any) => state.addtask);
-
   // Dispatch function from Redux to dispatch actions
   const dispatch = useDispatch();
-
   // State variables to manage input values for the new task
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -57,26 +55,21 @@ const TaskModal: React.FC<TaskModalProps> = ({ visible, onClose }) => {
   ];
   const [isDatePickerVisible, setDatePickerVisibility] =
     useState<boolean>(false);
-
   React.useEffect(() => {
     saveTasks(AllTasks);
   }, [added]);
-
   // Function to handle the confirmation of date selection from the date picker
   const handleConfirm = (date: any) => {
     // Parse the selected date
     const parsedDate = new Date(date);
-
     // Extract year, month, and day from the parsed date
     const year = parsedDate.getFullYear();
     const month = parsedDate.getMonth() + 1;
     const day = parsedDate.getDate();
-
     // Create a formatted date string with leading zeros if necessary
     const formattedDate = `${day < 10 ? "0" + day : day}-${
       month < 10 ? "0" + month : month
     }-${year}`;
-
     // Set the formatted date to the state and hide the date picker
     setdate(formattedDate);
     setDatePickerVisibility(false);
@@ -89,7 +82,6 @@ const TaskModal: React.FC<TaskModalProps> = ({ visible, onClose }) => {
       Toast.show("Max Character Limit Reached", 1000);
       return; // Exit the function
     }
-
     // Update the state with the input text
     setTitle(text);
   };
@@ -99,11 +91,9 @@ const TaskModal: React.FC<TaskModalProps> = ({ visible, onClose }) => {
     if (newTask.length < 1) {
       return; // Exit the function
     }
-
     try {
       // Convert the new task array to a JSON string and save it to AsyncStorage
       await AsyncStorage.setItem("TodoTasks", JSON.stringify(newTask));
-
       // Show a toast message indicating that the task was added successfully
       Toast.show("Task Added Successfully!", Toast.CENTER);
     } catch (error) {
@@ -111,7 +101,6 @@ const TaskModal: React.FC<TaskModalProps> = ({ visible, onClose }) => {
       console.error("Error saving tasks", error);
     }
   };
-
   // Function to handle adding a new task
   const handleAdd = async () => {
     // Check if the title field is empty
@@ -132,7 +121,6 @@ const TaskModal: React.FC<TaskModalProps> = ({ visible, onClose }) => {
       Toast.show("Please Select Catagory", Toast.CENTER);
       return; // Exit the function
     }
-
     // Create a new task object with the provided title, description, category, deadline, and status
     const newTask: NewTask = {
       title: title,
@@ -142,18 +130,15 @@ const TaskModal: React.FC<TaskModalProps> = ({ visible, onClose }) => {
       deadline: date,
       status: 0,
     };
-
     try {
       // Dispatch an action to add the new task to the store
       dispatch(AddTask(newTask));
-
       // Toggle the added flag to trigger a re-render
       setadded(!added);
     } catch (error) {
       // Show a toast message if an error occurs while adding the task
       Toast.show("An Error Occurred. Please Try Again!", Toast.CENTER);
     }
-
     // Reset input fields and close the modal
     setTitle("");
     setDescription("");
@@ -161,7 +146,6 @@ const TaskModal: React.FC<TaskModalProps> = ({ visible, onClose }) => {
     setdate("");
     onClose();
   };
-
   return (
     <Modal
       visible={visible}
@@ -180,7 +164,6 @@ const TaskModal: React.FC<TaskModalProps> = ({ visible, onClose }) => {
             multiline={true}
             maxLength={35}
           />
-
           <View
             style={{
               flexDirection: "row",
@@ -248,7 +231,6 @@ const TaskModal: React.FC<TaskModalProps> = ({ visible, onClose }) => {
             value={description}
             onChangeText={setDescription}
           />
-
           <View style={styles.buttonContainer}>
             <Button
               title="Discard"
@@ -274,7 +256,6 @@ const TaskModal: React.FC<TaskModalProps> = ({ visible, onClose }) => {
               }}
               containerStyle={{
                 width: "45%",
-
                 marginVertical: 10,
               }}
             />
@@ -297,7 +278,6 @@ const TaskModal: React.FC<TaskModalProps> = ({ visible, onClose }) => {
               }}
               containerStyle={{
                 width: "45%",
-
                 marginVertical: 10,
               }}
             />
@@ -307,13 +287,11 @@ const TaskModal: React.FC<TaskModalProps> = ({ visible, onClose }) => {
     </Modal>
   );
 };
-
 const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-
     backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
   },
   btn: {},
@@ -351,5 +329,4 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
-
 export default TaskModal;

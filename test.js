@@ -1,6 +1,5 @@
 import * as React from "react";
 import { SearchBar } from "@rneui/base";
-
 export default () => {
   const [value, setValue] = React.useState("");
   return (

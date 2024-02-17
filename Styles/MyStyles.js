@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     paddingTop: 25,
     paddingHorizontal: 15,
-
     borderTopWidth: 10,
   },
   addButtonr: {
@@ -25,7 +24,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3, // For shadow (iOS)
     shadowRadius: 3, // For shadow (iOS)
     shadowOffset: { width: 0, height: 2 }, // For shadow (iOS)
-
     color: "white",
     zIndex: 999,
   },

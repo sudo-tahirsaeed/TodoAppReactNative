@@ -15,7 +15,6 @@ import { useDispatch } from "react-redux";
 import { DeleteTask, UpdateTaskStatus } from "../redux/slices/AddTask";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 //Creating Interface for our task status 0 means pending 1 means completed
-
 interface Task {
   taskid: string;
   title: string;
@@ -33,18 +32,13 @@ const TaskTiles: React.FC<TaskTilesProps> = ({ allTask, refresh, bydate }) => {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
   }
-
   const dispatch = useDispatch();
-
   // State variable to track the ID of the expanded task
   const [expandedTaskId, setExpandedTaskId] = useState(null);
-
   // State variable to track the number of visible tasks
   const [visibleTasks, setVisibleTasks] = useState(15);
-
   // State variable to track whether a task was added
   const [added, setadded] = useState<boolean>(false);
-
   // Function to handle task press and toggle the expansion of task details
   const handleTaskPress = (taskId: any) => {
     // Configure layout animation for smooth transition
@@ -52,12 +46,10 @@ const TaskTiles: React.FC<TaskTilesProps> = ({ allTask, refresh, bydate }) => {
     // Toggle expanded state of the clicked task
     setExpandedTaskId((prevId) => (prevId === taskId ? null : taskId));
   };
-
   // Effect hook to save tasks to AsyncStorage when 'added' state changes
   React.useEffect(() => {
     saveTasks(allTask);
   }, [added]);
-
   // Function to save tasks to AsyncStorage
   const saveTasks = async (newTask: Task[]) => {
     // Check if there are tasks to save
@@ -250,12 +242,10 @@ const TaskTiles: React.FC<TaskTilesProps> = ({ allTask, refresh, bydate }) => {
       )}
     </TouchableOpacity>
   );
-
   // Function to load more items when end of the list is reached
   const loadMoreItems = () => {
     // Calculate the new number of visible tasks by adding 7 to the current number
     const newVisibleTasks = visibleTasks + 7;
-
     // Update the state to reflect the new number of visible tasks
     setVisibleTasks(newVisibleTasks);
   };
