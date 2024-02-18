@@ -32,9 +32,16 @@ export default function Main() {
   const [chipVal, setChip] = React.useState<number>(3);
   // State to control loading state
   const [load, setload] = React.useState<boolean>(false);
+
   // State to control sorting tasks by date
   const [bydate, setbydate] = React.useState<boolean>(false);
   //Loading Tasks Initially
+  React.useEffect(() => {
+    loadTasks();
+  }, []);
+  React.useEffect(() => {
+    updatestorage();
+  }, [mytasks]);
   React.useEffect(() => {
     loadTasks();
   }, []);
@@ -42,6 +49,11 @@ export default function Main() {
   React.useEffect(() => {
     modifyTasks(chipVal);
   }, [chipVal, load, value]);
+  async function updatestorage() {
+    if (mytasks) {
+      await AsyncStorage.setItem("TodoTasks", JSON.stringify(mytasks));
+    }
+  }
   // Function to modify tasks based on filters
   const modifyTasks = (val: number) => {
     // Resetting the 'bydate' state to false
@@ -74,11 +86,13 @@ export default function Main() {
             deadline: formattedDeadline,
           };
         });
-        const sortedTasks = [...tasksWithFormattedDates].sort((a, b) => {
-          const dateA = new Date(b.deadline);
-          const dateB = new Date(a.deadline);
-          return dateB.getTime() - dateA.getTime();
-        });
+        const sortedTasks = [...tasksWithFormattedDates]
+          .sort((a, b) => {
+            const dateA = new Date(b.deadline);
+            const dateB = new Date(a.deadline);
+            return dateB.getTime() - dateA.getTime();
+          })
+          .reverse();
         // Update the state to display sorted tasks by date
         setmyTasks(sortedTasks);
         // Set the 'bydate' state to true
@@ -98,12 +112,18 @@ export default function Main() {
     try {
       // Load tasks from AsyncStorage
       const storedTasks = await AsyncStorage.getItem("TodoTasks");
+
       if (storedTasks) {
         // Parse the stored tasks and dispatch to Redux store
         const taskArray: Tasks[] = JSON.parse(storedTasks);
-        dispatch(AddTask(taskArray));
+        taskArray.forEach((element) => {
+          dispatch(AddTask(element));
+        });
+
         // Toggle the 'load' state to trigger re-render
         setload(!load);
+      } else {
+        console.log("NOTHING");
       }
     } catch (error) {
       console.error("Error loading tasks", error);
