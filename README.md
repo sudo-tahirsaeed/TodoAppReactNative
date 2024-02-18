@@ -25,10 +25,6 @@ Welcome to the Todo List App! This application is designed to help users effecti
 - **Share on WhatsApp:** Easily share task details with others via WhatsApp, facilitating collaboration and communication among users.
 ## APK FILE URL
 https://drive.google.com/file/d/1Sl0jqQsEPHiW6w4qFZcZul3ZlXojD3Ho/view?usp=sharing
-## Working Demo Video
-[![Video Demo](https://github.com/sudo-tahirsaeed/RopstamTodoApp/blob/main/Working%20Video/WorkingApp.mp4)
-
-
 ## Technologies Used
 - **React Native:** A framework for building cross-platform mobile applications, providing a robust and efficient development environment.
 - **TypeScript:** TypeScript is integrated into the project for enhanced code quality, maintainability, and developer productivity.
