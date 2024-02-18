@@ -47,24 +47,7 @@ const TaskTiles: React.FC<TaskTilesProps> = ({ allTask, refresh, bydate }) => {
     // Toggle expanded state of the clicked task
     setExpandedTaskId((prevId) => (prevId === taskId ? null : taskId));
   };
-  // Effect hook to save tasks to AsyncStorage when 'added' state changes
-  React.useEffect(() => {
-    saveTasks(allTask);
-  }, [added]);
-  // Function to save tasks to AsyncStorage
-  const saveTasks = async (newTask: Task[]) => {
-    // Check if there are tasks to save
-    if (newTask.length < 1) {
-      return;
-    }
-    try {
-      // Save tasks to AsyncStorage
-      await AsyncStorage.setItem("TodoTasks", JSON.stringify(newTask));
-    } catch (error) {
-      // Show error message if an error occurs while saving tasks
-      Toast.show("Error Performing Operation", Toast.CENTER);
-    }
-  };
+
   //Redering items for Tiles in flatlist for our data
   const renderItem = ({ item }: { item: Task }) => (
     <TouchableOpacity onPress={() => handleTaskPress(item.taskid)}>
