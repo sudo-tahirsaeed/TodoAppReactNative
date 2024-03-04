@@ -1,7 +1,7 @@
 #  Todo List App
 
 ## Overview
-Welcome to the Todo List App! This application is designed to help users effectively manage their tasks and stay organized. With its intuitive interface and robust features, users can streamline their task management process and enhance productivity.
+Welcome to the Todo List App! This application marks the beginning of my journey into app development, crafted 2.5 years ago. It's a humble attempt to help users organize their tasks efficiently and boost productivity. With its simple yet intuitive interface, this app aims to streamline task management and serve as a cherished memory of my early programming endeavors. Enjoy the journey of productivity with this humble creation!
 
 ## Features
 ### Task Management
